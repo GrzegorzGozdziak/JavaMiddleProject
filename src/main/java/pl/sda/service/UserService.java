@@ -1,17 +1,15 @@
 package pl.sda.service;
 
 import pl.sda.model.User;
+import pl.sda.xml.XMLFactory;
 
-/**
- * Created by RENT on 2017-03-13.
- */
 public class UserService {
-
-    public UserService() {
-    }
 
     public boolean authenticate(User user) {
 
-        return false;
+        DataService dataService = new DataService();
+
+        User userFromFile = dataService.loadData();;
+        return user.equals(userFromFile);
     }
 }

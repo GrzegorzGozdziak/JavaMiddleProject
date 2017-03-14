@@ -14,7 +14,7 @@ public class DataService {
         this.file = new File("C:\\Users\\RENT\\Desktop\\data.dat");
     }
 
-    public void saveData(String xmlString) throws IOException {
+    public void saveData(String xmlString) {
 
         try {
             FileUtils.touch(file);
