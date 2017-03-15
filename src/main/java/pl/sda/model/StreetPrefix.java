@@ -4,11 +4,20 @@ public enum StreetPrefix {
 
     STREET("ul."), AVENIUE("al."), SQUARE("pl.");
 
+    private String prefix;
+
     public String getPrefix() {
         return prefix;
     }
 
-    private final String prefix;
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
+    }
+
+
+
+
+
 
     StreetPrefix(String prefix) {
         this.prefix = prefix;

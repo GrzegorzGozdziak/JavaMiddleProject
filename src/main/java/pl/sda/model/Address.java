@@ -10,6 +10,15 @@ public class Address {
     private String postalCode;
     private String city;
     private String country;
+
+    public StreetPrefix getStreetPrefix() {
+        return streetPrefix;
+    }
+
+    public void setStreetPrefix(StreetPrefix streetPrefix) {
+        this.streetPrefix = streetPrefix;
+    }
+
     private StreetPrefix streetPrefix;
 
     public Address() {
