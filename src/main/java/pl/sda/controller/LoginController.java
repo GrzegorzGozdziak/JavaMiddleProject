@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import pl.sda.model.User;
 import pl.sda.service.UserService;
 
-public class LoginController {
+public class LoginController extends Controller {
 
     @FXML
     private Button submit;

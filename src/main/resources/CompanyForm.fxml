@@ -34,14 +34,14 @@
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Company Name:" textAlignment="RIGHT" wrappingWidth="170.443359375" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adress" textAlignment="RIGHT" wrappingWidth="170.951171875" GridPane.rowIndex="1" />
             <TextField fx:id="companyNameTextField" GridPane.columnIndex="1" />
-            <Button fx:id="submit" mnemonicParsing="false" onAction="#addCompanyOnAction" text="Zaloguj" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <Button fx:id="submit" mnemonicParsing="false" onAction="#addCompanyOnAction" text="Dodaj" GridPane.columnIndex="1" GridPane.rowIndex="10" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="StreetName" textAlignment="RIGHT" wrappingWidth="175.923828125" GridPane.rowIndex="3" />
             <TextField fx:id="streetNameField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="houseNumberField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="FlatNumber" textAlignment="RIGHT" wrappingWidth="175.54296875" GridPane.rowIndex="5" />
             <TextField fx:id="flatNumberField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="PostCode" textAlignment="RIGHT" wrappingWidth="173.712890625" GridPane.rowIndex="6" />
-            <TextField fx:id="postCodeField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="postCodeField" onDragExited="#validateOnAction" onDragOver="#validateOnAction" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="City" textAlignment="RIGHT" wrappingWidth="174.13671875" GridPane.rowIndex="7" />
             <TextField fx:id="cityField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Country" textAlignment="RIGHT" wrappingWidth="174.13671875" GridPane.rowIndex="8" />
@@ -51,6 +51,8 @@
             <RadioButton fx:id="streetRadio" mnemonicParsing="false" onAction="#choosePrefixOnAction" text="Ulica" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <RadioButton fx:id="placeRadio" layoutX="292.0" layoutY="131.0" mnemonicParsing="false" onAction="#choosePrefixOnAction" text="Plac" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
             <RadioButton fx:id="avenueRadio" layoutX="424.0" layoutY="131.0" mnemonicParsing="false" onAction="#choosePrefixOnAction" text="Aleja" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+            <Button fx:id="makePdfButton" layoutX="292.0" layoutY="555.0" mnemonicParsing="false" onAction="#makePdfOnAction" text="Pdf" GridPane.rowIndex="10" />
+             <Button fx:id="validateButton" layoutX="292.0" layoutY="555.0" mnemonicParsing="false" onAction="#validateOnAction" prefHeight="25.0" prefWidth="79.0" text="validate" textAlignment="RIGHT" GridPane.rowIndex="11" />
          </children>
       </GridPane>
    </children>

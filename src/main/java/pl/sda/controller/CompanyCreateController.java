@@ -2,15 +2,17 @@ package pl.sda.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import pl.sda.model.Address;
 import pl.sda.model.Company;
 import pl.sda.model.StreetPrefix;
+import pl.sda.pdf.PdfFactory;
+import pl.sda.service.DataService;
 
-public class CompanyCreateController {
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class CompanyCreateController extends Controller{
 
     @FXML
     private TextField postCodeField;
@@ -70,7 +72,11 @@ public class CompanyCreateController {
     }
 
     @FXML
-    void addCompanyOnAction(ActionEvent event) {
+    Company addCompanyOnAction() {
+        return bindToModelCompany();
+    }
+
+    private Company bindToModelCompany() {
         Company company = new Company();
         company.setName(companyNameTextField.getText());
         Address address = new Address();
@@ -83,11 +89,14 @@ public class CompanyCreateController {
 
         address.setPostalCode(postCodeField.getText());
         address.setCity(cityField.getText());
+        address.setCountry(countryField.getText());
         company.setAddress(address);
         company.setNip(nipField.getText());
-        System.out.println(company);
+//        System.out.println(company);
+        DataService dataService = new DataService();
+        dataService.printOutCompanyInfo(company);
 
-
+        return company;
     }
 
     @FXML
@@ -96,6 +105,34 @@ public class CompanyCreateController {
         streetRadio.setToggleGroup(group);
         placeRadio.setToggleGroup(group);
         avenueRadio.setToggleGroup(group);
+//        validatePostalCode();
+    }
+
+    private void validatePostalCode() {
+//        postCodeField.textProperty().addListener((observable, oldValue, newValue) -> {
+//            System.out.println("textfield changed from " + oldValue + " to " + newValue);
+            Pattern zipPattern = Pattern.compile("(^\\d{2}-\\d{3}$)");
+            Matcher zipMatcher = zipPattern.matcher(postCodeField.getText());
+            if (zipMatcher.find()) {
+                showAlertConfirmation("Good data");
+            } else {
+                showAlertError("Wrong Posta Code");
+            }
+    }
+
+
+
+    @FXML
+    void makePdfOnAction(ActionEvent event) {
+
+
+        PdfFactory pdfFactory = new PdfFactory();
+        pdfFactory.CreateCompanyPDF(addCompanyOnAction());
+    }
+
+    @FXML
+    void validateOnAction(ActionEvent event) {
+        validatePostalCode();
     }
 
 }
